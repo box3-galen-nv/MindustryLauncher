@@ -1,6 +1,9 @@
-[gd_scene format=3 uid="uid://bqxkilhqrp8xq"]
+[gd_scene format=3 uid="uid://22leli6jmbnq"]
 
-[node name="Control" type="Control" unique_id=2076894040]
+[ext_resource type="Script" uid="uid://b3cihqih25iyw" path="res://Scripts/StartMindustry.gd" id="1_edq8m"]
+[ext_resource type="Script" uid="uid://b6dkp7po0intp" path="res://Scripts/GetPath.gd" id="2_6i3jr"]
+
+[node name="Main" type="Control" unique_id=2076894040]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,3 +15,128 @@ grow_vertical = 2
 layout_mode = 0
 offset_right = 1280.0
 offset_bottom = 720.0
+metadata/_edit_lock_ = true
+
+[node name="Button" type="Button" parent="." unique_id=608904490]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -125.0
+offset_top = -75.0
+offset_right = -25.0
+offset_bottom = -25.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "启动游戏"
+script = ExtResource("1_edq8m")
+
+[node name="GetPath" type="Control" parent="." unique_id=67114531 node_paths=PackedStringArray("whereJava", "whereMindutry", "fileDialog_Java", "fileDialog_Mindustry")]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_6i3jr")
+whereJava = NodePath("whereJava")
+whereMindutry = NodePath("whereMindutry")
+fileDialog_Java = NodePath("whereJava/FileDialog_Java")
+fileDialog_Mindustry = NodePath("whereMindutry/FileDialog_Mindustry")
+
+[node name="whereJava" type="Panel" parent="GetPath" unique_id=123456789]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 470.0
+offset_top = 240.0
+offset_right = 770.0
+offset_bottom = 440.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="GetPath/whereJava" unique_id=987654321]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.7
+grow_horizontal = 2
+grow_vertical = 2
+text = "这是启动器第一次启动 所以需要自行配置下java目录"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GetJavaPath" type="Button" parent="GetPath/whereJava" unique_id=543216789]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.7
+anchor_right = 0.7
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+text = "打开资源管理器"
+
+[node name="FileDialog_Java" type="FileDialog" parent="GetPath/whereJava" unique_id=315580948]
+oversampling_override = 1.0
+title = "Open a File"
+initial_position = 2
+file_mode = 0
+display_mode = 1
+access = 2
+filters = PackedStringArray("java", "javac")
+
+[node name="whereMindutry" type="Panel" parent="GetPath" unique_id=1217923683]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 470.0
+offset_top = 240.0
+offset_right = 770.0
+offset_bottom = 440.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="GetPath/whereMindutry" unique_id=1035304579]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.7
+grow_horizontal = 2
+grow_vertical = 2
+text = "这是启动器第一次启动 所以需要自行配置下java目录"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GetMindustryPath" type="Button" parent="GetPath/whereMindutry" unique_id=1465584054]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.7
+anchor_right = 0.7
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+text = "打开资源管理器"
+
+[node name="FileDialog_Mindustry" type="FileDialog" parent="GetPath/whereMindutry" unique_id=171466378]
+oversampling_override = 1.0
+title = "Open a File"
+initial_position = 2
+file_mode = 0
+display_mode = 1
+access = 2
+filters = PackedStringArray("*.jar")
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
+[connection signal="pressed" from="GetPath/whereJava/GetJavaPath" to="GetPath" method="_on_get_java_path_pressed"]
+[connection signal="file_selected" from="GetPath/whereJava/FileDialog_Java" to="GetPath" method="_on_file_dialog_java_file_selected"]
+[connection signal="pressed" from="GetPath/whereMindutry/GetMindustryPath" to="GetPath" method="_on_get_mindustry_path_pressed"]
+[connection signal="file_selected" from="GetPath/whereMindutry/FileDialog_Mindustry" to="GetPath" method="_on_file_dialog_mindustry_file_selected"]

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c50lr4qvsmgxw"]
+
+[ext_resource type="Script" uid="uid://dlfjnbj3vg8t5" path="res://Scripts/ProgramManager.gd" id="1_tbbj4"]
+
+[node name="Initialize" type="Node" unique_id=1921270428]
+script = ExtResource("1_tbbj4")

@@ -13,6 +13,7 @@ config_version=5
 config/name="MindustryLauncher"
 config/description="一个用于启动Mindustry的启动器"
 config/version="a.1.0"
+run/main_scene="uid://c50lr4qvsmgxw"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="uid://b14mkxpm8txcy"
 config/macos_native_icon="res://Icons/icon.icns"
